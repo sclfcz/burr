@@ -38,6 +38,9 @@ Each serialize function needs to a mirror deserialize function. To know which
 deserialize function to use, the serialize function needs to return a dictionary and have
 ``burr.core.serde.KEY`` as one of the keys mapping to the appropriate value.
 This is used to identify the deserialization function to use.
+The marker key ``__burr_serde__`` is reserved: a user dictionary that contains it is wrapped
+on serialization as ``{"__burr_serde__": "burr.dict", "value": <serialized dictionary>}``
+and unwrapped to the original dictionary on deserialization.
 
 Out of the box Implementations
 ==============================
